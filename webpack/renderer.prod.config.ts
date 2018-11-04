@@ -7,9 +7,9 @@ import { resolve } from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 import { Configuration } from 'webpack';
 import { smart as smartMerge } from 'webpack-merge';
-import baseConfig from './base.config';
+import rendererBaseConfig from './renderer.base.config';
 
-const config: Configuration = smartMerge(baseConfig, {
+const config: Configuration = smartMerge(rendererBaseConfig, {
   mode: 'production',
   target: 'electron-renderer',
   entry: resolve(__dirname, '../src/renderer/index'),
@@ -19,15 +19,6 @@ const config: Configuration = smartMerge(baseConfig, {
     pathinfo: false,
   },
   optimization: {
-    splitChunks: {
-      name: false,
-      cacheGroups: {
-        vendor: {
-          test: /node_modules/,
-          chunks: 'all',
-        },
-      },
-    },
     minimizer: [
       new TerserPlugin({
         cache: true,
@@ -84,9 +75,8 @@ const config: Configuration = smartMerge(baseConfig, {
         minifyCSS: true,
         minifyJS: true,
       },
-      hash: true,
       inject: 'head',
-      template: '!!@piuccio/ejs-compiled-loader!./src/index.ejs',
+      template: '!!@piuccio/ejs-compiled-loader!./src/renderer/index.ejs',
     }),
   ],
 });
