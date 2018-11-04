@@ -35,6 +35,10 @@ const config: Configuration = {
       },
     ],
   },
+  node: {
+    __dirname: false,
+    __filename: false,
+  },
 };
 
 export default config;
