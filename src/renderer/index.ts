@@ -1,1 +1,2 @@
-console.log('Hello, Webpack!');
+import './scripts/main';
+import './styles/main';
