@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron'
-import * as path from 'path'
+import { resolve } from 'path'
 import { format as formatUrl } from 'url'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -18,7 +18,7 @@ function createMainWindow() {
     window.loadURL(`http://localhost:8080`);
   } else {
     window.loadURL(formatUrl({
-      pathname: path.resolve(__dirname, 'index.html'),
+      pathname: resolve(__dirname, 'index.html'),
       protocol: 'file',
       slashes: true,
     }));

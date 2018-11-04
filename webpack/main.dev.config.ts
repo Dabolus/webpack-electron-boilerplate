@@ -1,7 +1,8 @@
+/* tslint:disable:object-literal-sort-keys */
+import { resolve } from 'path';
 import { Configuration } from 'webpack';
 import { smart as smartMerge } from 'webpack-merge';
 import baseConfig from './base.config';
-import { resolve } from 'path';
 
 const config: Configuration = smartMerge(baseConfig, {
   mode: 'development',
